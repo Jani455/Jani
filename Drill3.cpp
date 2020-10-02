@@ -5,11 +5,11 @@ int main()
 	constexpr double cm_to_m=100 ;
 	constexpr double in_to_m=2.54/100 ;
 	constexpr double ft_to_m=12*2.54/100 ;
-	int n = std::numeric_limits<int>::max();	
-	int t = std::numeric_limits<int>::min();
-	double x;
+	double min = std::numeric_limits<double>::max();	
+	double max = std::numeric_limits<double>::lowest();
 	double sum;
-	int g=0;
+	int db=0;
+	double x;
 	string y;
 	vector<double> values;
 	while( cin>> x >> y)
@@ -23,28 +23,28 @@ int main()
 			if(y=="in")
 				x=x*in_to_m;
 			
-			if(x<n and x>t)
+			if(x<min and x>max)
 				{
-					n=x;
-					t=x;
+					min=x;
+					max=x;
 				}
-			if(x<n)
+			if(x<min)
 				{
-				n=x;
+				min=x;
 				cout << x << " m, the smallest so far " << endl ;
 				}
 			
-			if(x>t)
+			if(x>max)
 				{
-				t=x;
+				max=x;
 				cout << x <<" m, the largest so far" << endl;
 				}
 			sum=sum+x;
-			++g;
+			++db;
 			values.push_back(x);
 		}
 		
-		cout <<"Numbers entered: " <<g << endl
+		cout <<"Numbers entered: " <<db << endl
 			 << "Sum of values entered: "<< sum <<" m"<<endl;
 		sort(values);
 		for(int i=0; i<values.size();++i)
